@@ -1,0 +1,11 @@
+---
+- name: Restarted Firewarlld
+  service:
+    name: firewalld
+    state: restarted
+
+- name: Started and Enableg Grafana
+  service: 
+    name: grafana-server 
+    enabled: true 
+    state: started

@@ -1,0 +1,7 @@
+---
+- name: Installing and configuring the Grafana Server
+  hosts: all
+  become: yes 
+
+  roles:
+    - role_deploy_grafana

@@ -1,0 +1,22 @@
+- name: Creating a repository configuration file for graphana
+  copy:
+    src: grafana.repo
+    dest: "{{ add_repo }}"
+
+- name: Install Grafana 
+  dnf: 
+    name: grafana 
+    state: latest 
+
+- name: Configure Firewalld 
+  firewalld: 
+    port: "3000/tcp"
+    permanent: yes 
+    state: enabled 
+  notify: 
+    - Restarted Firewarlld
+    - Started and Enableg Grafana
+
+- debug: 
+    msg:
+      - "Open the browser 'http://{{ ansible_ssh_host }}:3000'"

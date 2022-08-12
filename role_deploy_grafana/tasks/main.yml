@@ -1,0 +1,7 @@
+---
+- name: Installing and running on CentOS / Red Hat
+  include_tasks: centos_grafana.yaml
+  when:
+    - ansible_os_family == 'RedHat'
+
+
