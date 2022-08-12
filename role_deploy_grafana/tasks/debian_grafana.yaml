@@ -1,0 +1,35 @@
+- name: Update all packages 
+  apt:
+    name: "*"
+    state: latest 
+    update_cache: yes 
+    force_apt_get: yes
+
+- name: Adding a repository
+  apt_repository:
+    repo: "{{ deb_repo }}"
+    state: present
+
+- name: Add Docker GPG apt Key
+  apt_key:
+    url: "{{ deb_key }}"
+    state: present
+
+- name: Update all packages 
+  apt:
+    name: "*"
+    state: latest 
+    update_cache: yes 
+    force_apt_get: yes
+
+- name: Install Grafana 
+  apt: 
+    name: grafana 
+    state: latest 
+    update_cache: yes 
+  notify: 
+    - Started and Enableg Grafana
+
+- debug: 
+    msg:
+      - "Open the browser 'http://{{ ansible_ssh_host }}:3000'"

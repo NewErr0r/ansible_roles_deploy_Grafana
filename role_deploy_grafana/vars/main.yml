@@ -1,2 +1,4 @@
 ---
 add_repo: /etc/yum.repos.d/grafana.repo
+deb_repo: "deb https://packages.grafana.com/oss/deb stable main"
+deb_key: "https://packages.grafana.com/gpg.key"
